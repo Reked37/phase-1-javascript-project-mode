@@ -8,21 +8,26 @@ function createQuote(quote){
     const creatediv = document.createElement('div')
     const quoteContainer = document.querySelector('.quote-container')
     creatediv.innerHTML = `
-        <div>${quote.quote}<div>
-        <div>${quote.author}<div>
-        <p>${quote.source}<p>
+        <p>
+            ${quote.quote}<br>
+            -${quote.author}<br>
+            <i>${quote.source}</i><br>
+       <p>
     `
     quoteContainer.appendChild(creatediv)
 }
 
 //Highlight a word
-function highlightAWord(){
-    document.addEventListener('click',(e)=>{
+ document.querySelector('.quote-container').addEventListener('click',(e)=>{
         e.preventDefault
-        const selectQuoteContainer = document.querySelector('#quote-container')
-
+        const selectQuoteContainer = document.querySelector('.quote-container')
+        let sentence = selectQuoteContainer.querySelector('p')
+        console.log(sentence)
         return
-    })
+})
+
+function highlightWord(word){
+
 }
 
 //Highlight a sentence
@@ -43,15 +48,18 @@ function addQuoteToTop5List(){
 }
 
 //Add a quote to the list
-document.querySelector('.quote-container').addEventListener('submit',handleQuote)
-function handleQuote(){
+document.querySelector('.quote-form').addEventListener('click',handleQuote)
+
+function handleQuote(e){
+    console.log(e.target.value)
     e.preventDefault()
     let quoteObj = {
-        quote: e.target.quote.value,
-        author: e.target.author.value,
-        source: e.target.source.value
+        quote: e.target.value,
+        author: e.target.value,
+        source: e.target.value
     }
-    postNewQuote(quoteObj)
+    console.log(quoteObj)
+    createQuote(quoteObj)
 }
 
 function postNewQuote(quoteObj){
@@ -65,14 +73,6 @@ function postNewQuote(quoteObj){
     })
     .then((res=>res.json()))
     .then((data)=>createQuote(data))
-}
-
-//Gets the selected text by the user
-const selection = document.getSelection()
-function testSelection(){
-    document.addEventListener('click',()=>{
-        console.log(selection)
-    })   
 }
 
 
