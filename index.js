@@ -1,11 +1,16 @@
+//fetch db.json
+fetch('http://localhost:3000/quotes')
+.then(res => res.json())
+.then(data => data.forEach(quote => createQuote(quote)))
+
 //Puts all the quotes onto the html
-function createQuote(quotes){
+function createQuote(quote){
     const creatediv = document.createElement('div')
-    const quoteContainer = document.querySelector('#quote-container')
+    const quoteContainer = document.querySelector('.quote-container')
     creatediv.innerHTML = `
-        <div>${quotes.quote}<div>
-        <div>${quotes.author}<div>
-        <div>${quotes.source}<div>
+        <div>${quote.quote}<div>
+        <div>${quote.author}<div>
+        <p>${quote.source}<p>
     `
     quoteContainer.appendChild(creatediv)
 }
@@ -65,12 +70,9 @@ function postNewQuote(quoteObj){
 //Gets the selected text by the user
 const selection = document.getSelection()
 function testSelection(){
-    document.addEventListener('click',(e)=>{
+    document.addEventListener('click',()=>{
         console.log(selection)
-    })
+    })   
 }
 
-//fetch db.json
-fetch('http://localhost:3000/quotes')
-.then(res => res.json())
-.then(data => data.forEach(quote => createQuote(quote)))
+
