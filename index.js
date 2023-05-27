@@ -26,10 +26,6 @@ function createQuote(quote){
         return
 })
 
-function highlightWord(word){
-
-}
-
 //Highlight a sentence
 function highlightASentence(){
     document.addEventListener('click',(e)=>{
@@ -39,11 +35,24 @@ function highlightASentence(){
 }
 
 //Add a quote to the Top 5 List
+document.addEventListener('keydown',addQuoteToTop5List)
 function addQuoteToTop5List(){
-    document.addEventListener('keydown',(e)=>{
-        e.preventDefault
-        return
-    })
+    //console.log('keydown')
+    const quoteContainer= document.querySelector('.quote-form')
+    quoteContainer.addEventListener('mouseover',mouseOver())
+    //  if(keydown === 1){
+
+//  }else if(keydown === 2){
+
+//  }else if(keydown ===3){
+
+//  }else if(keydown === 4){
+
+//  }else if(keydown ===5){
+
+//  }
+}
+function mouseOver(){
 
 }
 
@@ -58,8 +67,8 @@ function handleQuote(e){
         source: document.querySelector('#addSource').value
     }
     console.log(quoteObj)
-    //createQuote(quoteObj)
-    postNewQuote(quoteObj)
+    createQuote(quoteObj)
+    //postNewQuote(quoteObj)
     document.querySelector('#addQuote').value= ""
     document.querySelector('#addAuthor').value = " "
     document.querySelector('#addSource').value = ""
