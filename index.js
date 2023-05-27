@@ -58,7 +58,8 @@ function handleQuote(e){
         source: document.querySelector('#addSource').value
     }
     console.log(quoteObj)
-    createQuote(quoteObj)
+    //createQuote(quoteObj)
+    postNewQuote(quoteObj)
     document.querySelector('#addQuote').value= ""
     document.querySelector('#addAuthor').value = " "
     document.querySelector('#addSource').value = ""
