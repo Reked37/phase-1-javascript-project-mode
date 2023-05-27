@@ -48,15 +48,14 @@ function addQuoteToTop5List(){
 }
 
 //Add a quote to the list
-document.querySelector('.quote-form').addEventListener('click',handleQuote)
+document.querySelector('.quote-form').addEventListener('submit',handleQuote)
 
 function handleQuote(e){
-    console.log(e.target.value)
     e.preventDefault()
     let quoteObj = {
-        quote: e.target.value,
-        author: e.target.value,
-        source: e.target.value
+        quote: document.querySelector('#addQuote').value,
+        author: document.querySelector('#addAuthor').value,
+        source: document.querySelector('#addSource').value
     }
     console.log(quoteObj)
     createQuote(quoteObj)
