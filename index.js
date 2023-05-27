@@ -59,6 +59,9 @@ function handleQuote(e){
     }
     console.log(quoteObj)
     createQuote(quoteObj)
+    document.querySelector('#addQuote').value= ""
+    document.querySelector('#addAuthor').value = " "
+    document.querySelector('#addSource').value = ""
 }
 
 function postNewQuote(quoteObj){
