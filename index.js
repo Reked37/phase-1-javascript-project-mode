@@ -21,18 +21,26 @@ function createQuote(quote){
  document.querySelector('.quote-container').addEventListener('click',(e)=>{
         e.preventDefault
         const selectQuoteContainer = document.querySelector('.quote-container')
-        let sentence = selectQuoteContainer.querySelector('p')
-        console.log(sentence)
-        return
+        let selectP = selectQuoteContainer.querySelector('p')
+        console.log(selectP)
+        const clickedElement = e.target
+        if(clickedElement.nodeName === 'SPAN'){
+            console.log('highlighted')
+            return clickedElement.classList.toggle('highlight')
+        }else{
+            const selectedText= window.getSelection().toString()
+            console.log(selectedText)
+            const words = selectedText.innerHTML
+            console.log(words)
+            if(selectedText !== ""){
+                const highlightText= `<span class='highlight'>`+selectedText+'</span>'
+                const newHTML= selectP.innerHTML.replace(selectedText, highlightText);
+                console.log('not highlighted')
+                return paragraph.innerHTML = newHTML
+            }
+        }
 })
 
-//Highlight a sentence
-function highlightASentence(){
-    document.addEventListener('click',(e)=>{
-        e.preventDefault
-        return
-    })
-}
 
 //Add a quote to the Top 5 List
 document.addEventListener('keydown',addQuoteToTop5List)
