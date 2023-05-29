@@ -4,21 +4,21 @@ fetch('http://localhost:3000/quotes')
 .then(data => data.forEach(quote => createQuote(quote)))
 
 //Puts all the quotes onto the html
-function createQuote(quote){
-    const creatediv = document.createElement('div')
-    const quoteContainer = document.querySelector('.quote-container')
+function createQuote(quote) {
+    const creatediv = document.createElement('li')
+    const quoteContainer = document.querySelector('#quote-container-list')
+    // console.log(quoteContainer)
     creatediv.innerHTML = `
-        <p>
             ${quote.quote}<br>
             -${quote.author}<br>
             <i>${quote.source}</i><br>
-       <p>
-    `
+            <br>
+        `
     quoteContainer.appendChild(creatediv)
 }
 
 //Highlight a word
-document.querySelector('.quote-container').addEventListener('click', (e) => {
+document.querySelector('#quote-container-list').addEventListener('click', (e) => {
     e.preventDefault
     const clickedElement = e.target
     if (clickedElement.nodeName === 'SPAN') {
@@ -30,8 +30,8 @@ document.querySelector('.quote-container').addEventListener('click', (e) => {
         console.log(selectedText)
         if(selectedText !==""){
             const highlightText= "<span class='highlight'>"+selectedText+"</span>"
-            const newHTML = document.querySelector('.quote-container').innerHTML.replace(selectedText, highlightText)
-            return document.querySelector('.quote-container').innerHTML=newHTML
+            const newHTML = document.querySelector('#quote-container-list').innerHTML.replace(selectedText, highlightText)
+            return document.querySelector('#quote-container-list').innerHTML=newHTML
         }
     }
 
@@ -40,25 +40,35 @@ document.querySelector('.quote-container').addEventListener('click', (e) => {
 
 
 //Add a quote to the Top 5 List
-document.addEventListener('keydown',addQuoteToTop5List)
-function addQuoteToTop5List(){
-    //console.log('keydown')
-    const quoteContainer= document.querySelector('.quote-form')
-    quoteContainer.addEventListener('mouseover',mouseOver())
-    //  if(keydown === 1){
+document.addEventListener('keydown', (event) => {
+    const keyChar= event.key
+    if (keyChar === '1') {
+        const valueOfOne = mouseOver()
+        console.log(1)
+    } else if (keyChar === '2') {
+        mouseOver()
+        console.log(2)
+    } else if (keyChar === '3') {
+        mouseOver()
+        console.log(3)
+    } else if (keyChar === '4') {
+        mouseOver()
+        console.log(4)
+    } else if (keyChar === '5') {
+        mouseOver()
+        console.log(5)
+    }
+})
 
-//  }else if(keydown === 2){
-
-//  }else if(keydown ===3){
-
-//  }else if(keydown === 4){
-
-//  }else if(keydown ===5){
-
-//  }
-}
-function mouseOver(){
-
+function mouseOver() {
+    document.querySelector('#quote-container-list').addEventListener('mouseover', (e) => {
+        let arr=[e.target.textContent]
+        for(i=0; i<arr.length;i++){
+            const words = arr[i]
+            console.log('Words:', words)
+            return words
+        }
+    })
 }
 
 //Add a quote to the list
@@ -75,7 +85,7 @@ function handleQuote(e){
     createQuote(quoteObj)
     //postNewQuote(quoteObj)
     document.querySelector('#addQuote').value= ""
-    document.querySelector('#addAuthor').value = " "
+    document.querySelector('#addAuthor').value = ""
     document.querySelector('#addSource').value = ""
 }
 
