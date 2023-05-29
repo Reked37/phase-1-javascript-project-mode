@@ -18,28 +18,25 @@ function createQuote(quote){
 }
 
 //Highlight a word
- document.querySelector('.quote-container').addEventListener('click',(e)=>{
-        e.preventDefault
-        const selectQuoteContainer = document.querySelector('.quote-container')
-        let selectP = selectQuoteContainer.querySelector('p')
-        console.log(selectP)
-        const clickedElement = e.target
-        if(clickedElement.nodeName === 'SPAN'){
-            console.log('highlighted')
-            return clickedElement.classList.toggle('highlight')
-        }else{
-            const selectedText= window.getSelection().toString()
-            console.log(selectedText)
-            const words = selectedText.innerHTML
-            console.log(words)
-            if(selectedText !== ""){
-                const highlightText= `<span class='highlight'>`+selectedText+'</span>'
-                const newHTML= selectP.innerHTML.replace(selectedText, highlightText);
-                console.log('not highlighted')
-                return paragraph.innerHTML = newHTML
-            }
+document.querySelector('.quote-container').addEventListener('click', (e) => {
+    e.preventDefault
+    const clickedElement = e.target
+    if (clickedElement.nodeName === 'SPAN') {
+        console.log('highlighted')
+        return clickedElement.classList.toggle('highlight')
+    }
+    else{
+        const selectedText = window.getSelection().toString()
+        console.log(selectedText)
+        if(selectedText !==""){
+            const highlightText= "<span class='highlight'>"+selectedText+"</span>"
+            const newHTML = document.querySelector('.quote-container').innerHTML.replace(selectedText, highlightText)
+            return document.querySelector('.quote-container').innerHTML=newHTML
         }
+    }
+
 })
+    
 
 
 //Add a quote to the Top 5 List
