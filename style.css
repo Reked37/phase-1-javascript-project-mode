@@ -1,3 +1,38 @@
 .highlight{
+    background-color: orange;
+}
+
+h2{
+    text-align: center;
+    color: orange;
+}
+
+.quoteList{
+    text-align: middle;
+    height: auto;
+    font-size: larger;
+    color:white;
+    width: auto;
+}
+
+.Top-5{
+    
+}
+
+#top5Quotes{
+    color:rgb(27, 212, 82)
+}
+
+.quote-form{
+    text-align: center;
+    float: right;
     background-color: yellow;
+    font-size: large;
+}
+html{
+    background-color:teal;
+}
+.top{
+    font-size: larger;
+    color: rgb(83, 0, 83)
 }
