@@ -18,36 +18,35 @@ function createQuote(quote) {
             <quote>${quote.quote}</quote><br>
             <author>-${quote.author}</author><br>
             <source><i>${quote.source}</i></source><br>
-            <button class='likeBtn'>Like!</button> <like >Likes: ${quote.like}</like>
+            <button class='likeBtn'>Like!</button> <like>Likes: ${quote.like}</like>
             <br>
             <br>
         `
     quoteContainer.appendChild(creatediv)
 
     //Like Button
-    document.querySelector('.likeBtn').addEventListener('click',()=>{
+    const likeBtn = creatediv.querySelector('.likeBtn')
+    likeBtn.addEventListener('click',(event)=>{
         quote.like++
-        return creatediv.querySelector('like').textContent=`Likes: ${quote.like}`
+        event.target.nextElementSibling.textContent=`Likes: ${quote.like}`
     })
 }
-
 
 
 //Highlight a word
 document.querySelector('#quote-container').addEventListener('contextmenu', (e) => {
     e.preventDefault
-    const clickedElement = e.target
-    // if (clickedElement.nodeName === 'SPAN') {
-    //     console.log('highlighted')
-    //     return clickedElement.classList.toggle('highlight')
-    // }
-    // else{
     const selectedText = window.getSelection().toString()
     console.log(selectedText)
     if (selectedText !== "") {
+        const quoteContainer = document.querySelector('#quote-container')
+        const innerHTML = quoteContainer.innerHTML
+        const firstIndex= innerHTML.indexOf(selectedText)
+        const secondIndex= innerHTML.indexOf(selectedText, firstIndex+1)
         const highlightText = "<span class='highlight'>" + selectedText + "</span>"
-        const newHTML = document.querySelector('#quote-container').innerHTML.replace(selectedText, highlightText)
-        return document.querySelector('#quote-container').innerHTML = newHTML
+        //const newHTML = quoteContainer.innerHTML.replace(new RegExp(selectedText, 'g'), highlightText)
+        const newHTML= innerHTML.substring(0, secondIndex)+ innerHTML.substring(secondIndex).replace(selectedText, highlightText)
+        return quoteContainer.innerHTML = newHTML
     }
 })
 
@@ -68,31 +67,24 @@ document.addEventListener('keydown', (event) => {
     event.preventDefault()
     const keyChar= event.key
     if (keyChar === '1') {
-        text=mouseOver(1)
-        console.log(text)
-        //document.querySelector('#Top1').appendChild(text)
-        return text
+        mouseOver(1)
     } else if (keyChar === '2') {
-        mouseOver()
-        console.log(2)
+        mouseOver(2)
     } else if (keyChar === '3') {
-        mouseOver()
-        console.log(3)
+        mouseOver(3)
     } else if (keyChar === '4') {
-        mouseOver()
-        console.log(4)
+        mouseOver(4)
     } else if (keyChar === '5') {
-        mouseOver()
-        console.log(5)
+        mouseOver(5)
     }
 })
 
 function mouseOver(place) {
     let quote; 
     document.querySelector('#quote-container').addEventListener('mouseover', function mouseQuote(e) {
-        quote= quotes.find(quote=> quote.id === parseInt(e.target.id))
+        findQuote= quotes.find(quote=> quote.id === parseInt(e.target.id))
         console.log(quote)
-        document.querySelector(`#Top${place}`).textContent =quote.quote
+        document.querySelector(`#Top${place}`).textContent =findQuote.quote
         document.querySelector('#quote-container').removeEventListener('mouseover', mouseQuote)
     })
     return quote
@@ -112,8 +104,7 @@ function handleQuote(e){
     }
     console.log(quoteObj)
     createQuote(quoteObj)
-
-    //postNewQuote(quoteObj)
+    postNewQuote(quoteObj)
 }
 
 function postNewQuote(quoteObj){
