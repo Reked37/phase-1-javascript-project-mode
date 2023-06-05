@@ -15,11 +15,14 @@ Event Listeners
 - When you 'click' a highlighted word in the quote it toggles off the highlighted portion - 'click'
 - When you press a number key 1-5 it adds the quote you are hovering over to a Top 5 list - 'keydown'
 
+Sources
+Video:https://www.youtube.com/watch?v=1DPwYNYWPB0&ab_channel=Reked
 
-Sources:
 Quotes
 - https://www.goodreads.com/work/quotes/3389674-man-s-search-for-meaning
 - https://www.goodreads.com/author/quotes/13852.Epictetus
 - https://www.goodreads.com/author/quotes/17928.Pierre_Hadot
 - https://www.goodreads.com/work/quotes/25384161-dying-every-day-seneca-at-the-court-of-nero#:~:text=%E2%80%9CNo%20matter%20how%20many%20men,'t%20kill%20your%20successor.%E2%80%9D&text=%E2%80%9CBut%20is%20life%20really%20worth,endure%20the%20overlordship%20of%20butchers. 
 - https://www.goodreads.com/work/quotes/31010 
+
+Author: Derek Truesdale
