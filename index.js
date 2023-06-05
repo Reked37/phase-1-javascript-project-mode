@@ -83,7 +83,6 @@ function mouseOver(place) {
     let quote; 
     document.querySelector('#quote-container').addEventListener('mouseover', function mouseQuote(e) {
         findQuote= quotes.find(quote=> quote.id === parseInt(e.target.id))
-        console.log(quote)
         document.querySelector(`#Top${place}`).textContent =findQuote.quote
         document.querySelector('#quote-container').removeEventListener('mouseover', mouseQuote)
     })
@@ -103,7 +102,7 @@ function handleQuote(e){
         like: 0
     }
     console.log(quoteObj)
-    createQuote(quoteObj)
+    //createQuote(quoteObj)
     postNewQuote(quoteObj)
 }
 
