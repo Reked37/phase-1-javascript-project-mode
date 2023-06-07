@@ -119,4 +119,11 @@ function postNewQuote(quoteObj){
     .then((data)=>createQuote(data))
 }
 
+// const selectForm =document.querySelector('#formtest')
+// selectForm.addEventListener('submit', (e)=>{
+//     e.preventDefault()
+//     const valueOfForm = e.target.fname.value
+//     console.log(valueOfForm)
+// })
+
 
